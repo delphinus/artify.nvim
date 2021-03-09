@@ -15,7 +15,7 @@ The original artify.vim is written by Vimscript and runs too slowly to use heavi
 ```lua
 local s = os.clock()
 for i = 1, 10000 do
-  vim.cmd[[call Artify('foo', 'bold')]]
+  vim.cmd[[call artify#convert('foo', 'bold')]]
 end
 print(os.clock() - s)
 
@@ -33,7 +33,20 @@ print(os.clock() - s)
 |------------|----------------------|
 | 6.314065 s | 0.0061699999999973 s |
 
-Simply x1000 speed!!
+~~Simply x1000 speed!!~~
+
+***UPDATED***
+
+@sainnhe updated the original implementation ([this commit][]) and it shows extremely improvement. I again benchmarked with more precisely with [this Dockerfile][].
+
+[this commit]: https://github.com/sainnhe/artify.vim/commit/372f6163903566605ecce75a7dcfd0a6e49b7292
+[this Dockerfile]: https://gist.github.com/delphinus/03eb2b746866c65cabead3ce2f606cc9
+
+| artify.vim | artify.nvim |
+|------------|-------------|
+| 0.220149   | 0.009719    |
+
+artify.nvim achieves x20~ speed!!
 
 ## Usage
 
