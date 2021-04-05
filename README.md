@@ -71,11 +71,13 @@ artify('foo', 'monospace') --> 𝚏𝚘𝚘
 ```lua
 local artify = require'artify'
 local lualine = require'lualine'
-local mode = require'lualine.components.mode'
 lualine.sections.lualine_a = {
-  function()
-    return artify(mode(), 'monospace')
-  end,
+  {
+    'mode',
+    format = function(value)
+      return artify(value, 'monospace')
+    end,
+  },
 }
 ```
 
